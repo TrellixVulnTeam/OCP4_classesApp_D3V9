@@ -1,5 +1,13 @@
 # OCP4_classesApp
 
+# To get this project:
+### 1. Download a zip  
+### 2. Clone project:
+ ###### A. Via git Https:  git clone https://github.com/motaALI/OCP4_classesApp.git
+ ###### B. Via ssh git@github.com:motaALI/OCP4_classesApp.git
+
+# In the project dir:
+
 # Install the virtualenv package
 pip install virtualenv
 
