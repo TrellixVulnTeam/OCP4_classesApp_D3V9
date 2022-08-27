@@ -17,12 +17,12 @@ pip install -r .\requirements.txt
 # Run the classesApp:
 1. cd ./app
 2. python .\main.py
-3. Then select your options from each list or sublist of the application
- Bienvenue sur le gestionnaire d'échecs
-  1 - Gestion des joueurs
-  2 - Gestion des tournois
-  3 - Rapports
-  q - Quitter
-  Veuillez choisir une action :
+3. Then select your options from each list or sublist of the application\
+ Bienvenue sur le gestionnaire d'échecs\
+  1 - Gestion des joueurs\
+  2 - Gestion des tournois\
+  3 - Rapports\
+  q - Quitter\
+  Veuillez choisir une action :\
   
   
