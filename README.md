@@ -23,6 +23,9 @@ pip install -r .\requirements.txt
   2 - Gestion des tournois\
   3 - Rapports\
   q - Quitter\
-  Veuillez choisir une action :\
+  Veuillez choisir une action :
+ 
+ # Run flake8
+ flake8 --format=html --htmldir=flake-report
   
   
