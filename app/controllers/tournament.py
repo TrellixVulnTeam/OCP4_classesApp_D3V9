@@ -71,7 +71,7 @@ class Controller_tournament:
 
     def addPlayersToTournaments():
         print("Players ADDED To Tournaments")
-        id =  TournamentView.addPlayersToTournaments()
+        id = TournamentView.addPlayersToTournaments()
         return Tournament.get_one_tournament(id)
 
     """
