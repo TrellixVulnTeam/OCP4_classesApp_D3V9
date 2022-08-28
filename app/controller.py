@@ -1,3 +1,4 @@
+from controllers.reports import Controller_reports
 from controllers.player import Controller_player
 from controllers.tournament import Controller_tournament
 from view import Display
@@ -23,7 +24,7 @@ class Controller:
         elif response == "2":
             Controller_tournament.manage_tournaments()
         elif response == "3":
-            # self.matche_controller()
+            Controller_reports.manage_reports()
             print("Choix 3")
         elif response in ["q", "Q"]:
             Display.endView()
