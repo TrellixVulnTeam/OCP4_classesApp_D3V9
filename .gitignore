@@ -3,6 +3,7 @@
 env/
 .env_dechecs
 env_dechecs/
+/env_dechecs
 venv/
 ENV/
 env.bak/
