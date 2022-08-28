@@ -93,6 +93,29 @@ class TournamentView:
             """
             rounds_table.clear()
 
+    def showMatchsInTournament(matchs_in_tournament):
+        for index, round in enumerate(matchs_in_tournament):
+            for match in round:
+                matchs_table = PrettyTable()
+                matchs_table.field_names = ["Joueur UN", "Contre", "Joueur DEUX", "GANANT"]
+                winner = (
+                    match[0]["player"]
+                    if match[0]["histo_score"][index] == 1
+                    else match[1]["player"]
+                )
+                matchs_table.add_row(
+                    [
+                        Player.showPlayerName(int(match[0]["player"])),
+                        " X ",
+                        Player.showPlayerName(int(match[1]["player"])),
+                        Player.showPlayerName(int((winner))),
+                    ]
+                ),
+
+                matchs_table.add_row(["------", "------", "------", "------"])
+                print(matchs_table)
+                print(Style.RESET_ALL, end="")
+            
     def create_tournament():
         # name = input("Entrez le nom de tournois : ")
         # location = input("Entrez le lieu de tournois : ")
@@ -187,6 +210,12 @@ class TournamentView:
     def get_rounds_in_tournament():
         tournament_id = input(
             "Entrez l'id 'un tournoi pour affichier tous les rounds : "
+        )
+        return tournament_id
+    
+    def get_matchs_in_tournaments():
+        tournament_id = input(
+            "Entrez l'id 'un tournoi pour affichier tous les matches : "
         )
         return tournament_id
 

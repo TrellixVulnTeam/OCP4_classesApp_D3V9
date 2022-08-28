@@ -4,8 +4,8 @@ from views.tournament import TournamentView
 
 
 class Round:
-    def __init__(self, matches):
-        self.matches = matches
+    def __init__(self, matchs):
+        self.matchs = matchs
 
 
 class Controller_tournament:
@@ -34,6 +34,12 @@ class Controller_tournament:
         rounds_in_tournament = Tournament.get_rounds_in_tournament(id)
         return TournamentView.showRoundsInTournament(rounds_in_tournament)
 
+    def get_matchs_in_tournaments():
+        id = TournamentView.get_matchs_in_tournaments()
+        """ use same get_rounds_in_tournament function to get data"""
+        matchs_in_tournament = Tournament.get_rounds_in_tournament(id)
+        return TournamentView.showMatchsInTournament(matchs_in_tournament)
+    
     def create_tournament():
         (
             name,

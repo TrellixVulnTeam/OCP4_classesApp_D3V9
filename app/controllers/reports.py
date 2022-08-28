@@ -6,8 +6,8 @@ from controllers.tournament import Controller_tournament
 
 
 class Round:
-    def __init__(self, matches):
-        self.matches = matches
+    def __init__(self, matchs):
+        self.matchs = matchs
 
 
 class Controller_reports:
@@ -35,10 +35,10 @@ class Controller_reports:
     def manage_reports():
         menu = {
             "1": "Liste de tous les acteurs",
-            "2": "Liste des tournois",
-            "3": "Liste de tous les joueurs d'un tournoi",
-            "4": "Liste de tous les tournois",
-            "5": "Liste de tous les tours d'un tournoi",
+            "2": "Liste de tous les joueurs d'un tournoi",
+            "3": "Liste de tous les tournois",
+            "4": "Liste de tous les tours d'un tournoi",
+            "5": "Liste de tous les matchs d'un tournoi",
             "R": "Reveneir à l'accueil",
         }
 
@@ -47,14 +47,13 @@ class Controller_reports:
         if response == "1":
             Controller_player.show_sorted_players()
         if response == "2":
-            Controller_tournament.showAllTournaments()
-        elif response == "3":
-            print("Lister les joueurs de tornoi")
             Controller_tournament.show_tournament_players()
-        elif response == "4":
+        elif response == "3":
             Controller_tournament.showAllTournaments()
-        elif response == "5":
+        elif response == "4":
             Controller_tournament.get_rounds_in_tournaments()
+        elif response == "5":
+            Controller_tournament.get_matchs_in_tournaments()
         elif response == "R":
             print("Reveneir à l'accueil")
             print("\n")
