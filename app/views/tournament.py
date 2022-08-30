@@ -1,14 +1,13 @@
 from colorama import Fore, Style
 from prettytable import PrettyTable
 from models.player import Player
-from validation import Validators
 
 
 class TournamentView:
     def __init__(self) -> None:
         return self
 
-    def showAllView(list):
+    def showAllViewTournaments(list):
         print(f"{Fore.BLUE}Il y a {Fore.GREEN}{len(list)} {Fore.BLUE}tournois")
         my_table = PrettyTable()
         my_table.field_names = [
@@ -98,6 +97,7 @@ class TournamentView:
         for index, round in enumerate(matchs_in_tournament):
             for match in round:
                 matchs_table = PrettyTable()
+                print(f"{Fore.LIGHTBLUE_EX} ---------")
                 matchs_table.field_names = [
                     "Joueur UN",
                     "Contre",
@@ -118,53 +118,48 @@ class TournamentView:
                     ]
                 ),
 
-                matchs_table.add_row(["------", "------", "------", "------"])
+                matchs_table.add_row(
+                    [
+                        f"{Fore.LIGHTBLUE_EX}------",
+                        f"{Fore.LIGHTBLUE_EX}------",
+                        f"{Fore.LIGHTBLUE_EX}------",
+                        f"{Fore.LIGHTBLUE_EX}------",
+                    ]
+                )
                 print(matchs_table)
                 print(Style.RESET_ALL, end="")
 
-    def create_tournament():
-        name = str(input("Entrez le nom de tournois : "))
-        while Validators.is_valide_input_string(name) is False:
-            name = input("Entrez le nom de tournois : ")
-        location = input("Entrez le lieu de tournois : ")
-        while Validators.is_valide_input_string(location) is False:
-            location = input("Entrez le nom de tournois : ")
-        start_at = input("Entrez la date début de tournois : ")
-        while Validators.is_date_valide(start_at) is False:
-            start_at = input("Entrez la date début de tournois : ")
-        end_at = input("Entrez la le date fin de tournois : ")
-        # while Validators.is_date_valide(start_at) is False:
-        # end_at = input("Entrez la le date fin de tournois : ")
-        # time_control = input("Entrez le contrôle du temps : ")
-        # name = "Test 06"
-        # location = "Nantes"
-        # start_at = "30/06/2022"
-        # end_at = "30/06/2022"
-        time_control = 10
-        round = 0
-        players_str = input(
-            "Entrez les players utiliser un virgul pour separer ex [1, 2]: "
-        )
-        players = players_str.split(",")
-        players_int = [int(p) for p in players]
-        rounds = []
-        round_total = 4
-        description = input("Entrez la description : ")
-        while Validators.is_valide_input_string(description) is False:
-            description = input("Entrez la description : ")
-        # description = "la description"
-        return (
-            name,
-            location,
-            start_at,
-            end_at,
-            time_control,
-            round,
-            players_int,
-            rounds,
-            round_total,
-            description,
-        )
+    def get_input(tournament_item):
+        return input(tournament_item)
+
+    # def create_tournament():
+    #     # Manage the error !
+    #     name = str(input("Entrez le nom de tournois : "))
+    #     location = str(input("Entrez le lieu de tournois : "))
+    #     start_at = input("Entrez la date début de tournois : ")
+    #     end_at = input("Entrez la le date fin de tournois : ")
+    #     time_control = 10
+    #     round = 0
+    #     players_str = input(
+    #         "Entrez les players utiliser un virgul pour separer ex [1, 2]: "
+    #     )
+    #     players = players_str.split(",")
+    #     players_int = [int(p) for p in players]
+    #     rounds = []
+    #     round_total = 4
+    #     description = str(input("Entrez la description : "))
+    #     return (
+    #         name,
+    #         location,
+    #         start_at,
+    #         end_at,
+    #         time_control,
+    #         round,
+    #         players_int,
+    #         rounds,
+    #         round_total,
+    #         description,
+    #     )
 
     def addPlayersToTournaments():
         tournament_id = input(

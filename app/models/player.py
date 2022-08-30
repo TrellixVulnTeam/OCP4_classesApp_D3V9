@@ -1,16 +1,6 @@
-from datetime import datetime
-from colorama import Fore
 from tinydb import TinyDB
 
 player_db = TinyDB("DB/players.json")
-
-
-def valid_d_of_b(date):
-    try:
-        datetime.strftime(date, "%d/%m/%Y")
-    except Exception:
-        return False
-    return True
 
 
 class Player:
@@ -75,7 +65,8 @@ class Player:
         if player is None:
             print(f"Il n'a y aucun joueur avec l'id {id}")
         else:
-            print(f"Player à Modifier : {player}")
+            # print(f"Player à Modifier : {player}")
+
             classement = int(self.get("classement"))
             updated_player = player_db.update({"classement": classement}, doc_ids=[id])
             print(f"updated_player : {updated_player}")
@@ -85,14 +76,9 @@ class Player:
         return player.get("last_name")
 
     def show_sorted_players(self):
-        sort_keys = ["classement", "first_name"]
-        if self in sort_keys:
-            is_reverse = True if self == "classement" else False
-            res = player_db.all()
-            players_list = sorted(res, key=lambda p: p[self], reverse=is_reverse)
-            return players_list
-        else:
-            players_list = []
-            print(
-                f"{Fore.RED} Tri possible uniquement par classement ou l'ordre alphabétique"
-            )
+        res = player_db.all()
+        if self == 1:
+            players_list = sorted(res, key=lambda p: p["first_name"], reverse=False)
+        elif self == 2:
+            players_list = sorted(res, key=lambda p: p["classement"], reverse=True)
+        return players_list

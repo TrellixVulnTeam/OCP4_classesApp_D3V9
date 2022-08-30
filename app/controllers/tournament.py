@@ -1,6 +1,8 @@
 from models.tournament import Tournament
 from view import Display
 from views.tournament import TournamentView
+from validation import Validators
+from colorama import Fore
 
 
 class Round:
@@ -22,7 +24,7 @@ class Controller_tournament:
 
     def showAllTournaments():
         tournaments = Tournament.load_tournaments_db()
-        return TournamentView.showAllView(tournaments)
+        return TournamentView.showAllViewTournaments(tournaments)
 
     def show_tournament_players():
         sort_data_as_dict = TournamentView.get_data_to_sort_with()
@@ -41,18 +43,55 @@ class Controller_tournament:
         return TournamentView.showMatchsInTournament(matchs_in_tournament)
 
     def create_tournament():
-        (
-            name,
-            location,
-            start_at,
-            end_at,
-            time_control,
-            round,
-            players,
-            rounds,
-            round_total,
-            description,
-        ) = TournamentView.create_tournament()
+
+        name = TournamentView.get_input(f"{Fore.CYAN} Entrez le nom de tournois : ")
+        while not Validators.is_valide_input_string(str(name)):
+            name = TournamentView.get_input(f"{Fore.CYAN} Entrez le nom de tournois : ")
+
+        location = TournamentView.get_input(
+            f"{Fore.CYAN} Entrez le lieu de tournois : "
+        )
+        while not Validators.is_valide_input_string(str(location)):
+            location = TournamentView.get_input(
+                f"{Fore.CYAN} Entrez le lieu de tournois : "
+            )
+
+        start_at = TournamentView.get_input(
+            f"{Fore.CYAN} Entrez la date début de tournois : "
+        )
+        while not Validators.is_date_valide(start_at):
+            start_at = TournamentView.get_input(
+                f"{Fore.CYAN} Entrez la date début de tournois : "
+            )
+
+        end_at = TournamentView.get_input(
+            f"{Fore.CYAN} Entrez la le date fin de tournois : "
+        )
+        while not Validators.is_date_valide(end_at):
+            end_at = TournamentView.get_input(
+                f"{Fore.CYAN} Entrez la le date fin de tournois : "
+            )
+        time_control = 0
+        round = 0
+
+        players_str = TournamentView.get_input(
+            f"{Fore.CYAN} Entrez les players utiliser un virgul pour separer ex [1, 2]: "
+        )
+        while not Validators.is_valide_input_string(players_str):
+            players_str = TournamentView.get_input(
+                f"{Fore.CYAN} Entrez les players utiliser un virgul pour separer ex [1, 2]: "
+            )
+        players_in_list = players_str.split(",")
+        players = [int(p) for p in players_in_list]
+        rounds = []
+        round_total = 4
+
+        description = TournamentView.get_input(f"{Fore.CYAN} Entrez la description : ")
+        while not Validators.is_valide_input_string(str(description)):
+            description = TournamentView.get_input(
+                f"{Fore.CYAN} Entrez la description : "
+            )
+
         tournament = Tournament(
             name,
             location,
@@ -65,6 +104,7 @@ class Controller_tournament:
             round_total,
             description,
         )
+
         return tournament.create_tournament()
 
     def update_tournament():
@@ -92,11 +132,19 @@ class Controller_tournament:
         id = TournamentView.get_tournament_players()
         return Tournament.insert_tournament_result(id)
 
-    # def players_filter():
-    #     menu_display = {
-    #         "1": "Afficher tous les acteurs par ordre alphabétique",
-    #         "2": "Afficher tous les acteurs par classement",
-    #     }
+    def insert_player_score(player):
+        score = float(
+            TournamentView.get_input(
+                f"{Fore.CYAN} Entrez le score pour le joueur {player} : "
+            )
+        )
+        while score not in [0, 1, 5.0]:
+            score = float(
+                TournamentView.get_input(
+                    f"{Fore.CYAN} Entrez le score pour le joueur {player} :"
+                )
+            )
+        return Tournament.insert_player_score(score)
 
     def manage_tournaments():
         menu = {
@@ -117,10 +165,6 @@ class Controller_tournament:
         elif response == "2":
             print("Lister les joueurs de tornoi")
             Controller_tournament.show_tournament_players()
-        # elif response == "3":
-        #     for i in range(8):
-        #         print(f"Veuillez ajouter votre {i} jour")
-        #         Controller_tournament.add_players_to_tournaments()
         elif response == "3":
             players = []
             for i in range(8):

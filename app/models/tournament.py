@@ -85,6 +85,10 @@ class Tournament:
         """Sort players by name(ascending)"""
         self.players = sorted(self.players, key=lambda x: x.get("first_name"))
 
+    def insert_player_score(self, res):
+        self.players = sorted(self.players, key=lambda x: x.get("first_name"))
+        return res
+
     def get_tournament_players(self):
         tournament_players = []
         players_details = []

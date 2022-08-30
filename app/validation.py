@@ -6,25 +6,30 @@ from colorama import Fore
 class Validators:
     def is_date_valide(date_text):
         try:
-            datetime.strptime(date_text, "%d/%m/%Y")
+            if datetime.strptime(date_text, "%d/%m/%Y"):
+                return True
+            else:
+                return False
         except ValueError:
             raise ValueError(
                 "Il s'agit du format de chaîne de date incorrect veuillez réessayer avec ce format DD/MM/YYYY"
             )
 
     def is_valide_input_string(stie: str):
-        if len(stie) > 5:
-            print(f"len(stie) len(stie) {len(stie)}")
-            return True
-        else:
-            print(
+        try:
+            if len(stie) > 3:
+                return True
+            else:
+                return False
+        except ValueError:
+            raise ValueError(
                 f"{Fore.RED} {stie} DOIT être un chaîne de caractères et 4 caractères minimum"
             )
 
     def is_valide_input_gender(gender: str):
         try:
-            if gender.upper() in ("F", "M", "O"):
-                print(Fore.RED + "le genre doit être entre 'F', 'M' ou 'O")
+            if gender.upper() in ["F", "M", "O"]:
+                # print(Fore.RED + "le genre doit être entre 'F', 'M' ou 'O")
                 return True
             else:
                 return False

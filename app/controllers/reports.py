@@ -16,7 +16,7 @@ class Controller_reports:
 
     def showAllTournaments():
         tournaments = Tournament.load_tournaments_db()
-        return TournamentView.showAllView(tournaments)
+        return TournamentView.showAllViewTournaments(tournaments)
 
     def show_tournament_players():
         sort_data_as_dict = TournamentView.get_data_to_sort_with()
