@@ -48,3 +48,9 @@ class Validators:
                 return True
         except ValueError:
             raise ValueError(f"{classement} ne doit pas être vide")
+
+    def check_is_digit(input_str):
+        if input_str.strip().isdigit():
+            return True
+        else:
+            return False

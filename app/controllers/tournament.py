@@ -1,13 +1,14 @@
 from models.tournament import Tournament
+from models.round import Round
 from view import Display
 from views.tournament import TournamentView
 from validation import Validators
 from colorama import Fore
 
 
-class Round:
-    def __init__(self, matchs):
-        self.matchs = matchs
+# class Round:
+#     def __init__(self, matchs):
+#         self.matchs = matchs
 
 
 class Controller_tournament:
@@ -144,7 +145,7 @@ class Controller_tournament:
                     f"{Fore.CYAN} Entrez le score pour le joueur {player} :"
                 )
             )
-        return Tournament.insert_player_score(score)
+        return Round.insert_player_score(score)
 
     def manage_tournaments():
         menu = {

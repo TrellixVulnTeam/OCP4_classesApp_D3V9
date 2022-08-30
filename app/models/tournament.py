@@ -3,6 +3,7 @@ from time import sleep
 from tinydb import Query, TinyDB
 
 from models.player import Player
+from controllers.round import Controller_round
 
 player_db = TinyDB("DB/players.json")
 player_db_query = Query()
@@ -84,10 +85,6 @@ class Tournament:
     def sort_players_by_name(self):
         """Sort players by name(ascending)"""
         self.players = sorted(self.players, key=lambda x: x.get("first_name"))
-
-    def insert_player_score(self, res):
-        self.players = sorted(self.players, key=lambda x: x.get("first_name"))
-        return res
 
     def get_tournament_players(self):
         tournament_players = []
@@ -187,13 +184,12 @@ class Tournament:
         new_round = next_round
         for matche in new_round:
             for m in matche:
-                score = int(input(f"ENTER le score POUR CE round pour le joueur {m} :"))
+                # score = int(input(f"ENTER le score POUR CE round pour le joueur {m} :"))
+                score = Controller_round.insert_player_score(m)
                 new_histo = m.get("histo_score") + [score]
                 rank = sum(new_histo)
                 n_score = {"score": score, "rank": rank, "histo_score": new_histo}
                 m.update(n_score)
-        print(f"NEXT ROUND IS : {next_round}")
-        print(f"NEW ROUND IS : {new_round}")
 
         return new_round
 
@@ -228,7 +224,8 @@ class Tournament:
 
         for m in rounds[0]:
             for j in m:
-                score = int(input(f"ENTER de joueur {j} :"))
+                # score = int(input(f"ENTER de joueur {j} :"))
+                score = Controller_round.insert_player_score(j)
                 rank = score
                 j_score = {"score": score, "rank": rank, "histo_score": [score]}
                 # j_score = {"score": score}
@@ -251,7 +248,6 @@ class Tournament:
         tournament_db.update({"rounds": rounds}, doc_ids=[tournament_id])
         sleep(3)
         print("TROISIEME ROUND CREATED ...!")
-        print("TROISIEME ROUND FINISHED ...!")
 
         fourth_round = d["rounds"][2]
         fourth_array = self.next_round_with_score_and_new_score(fourth_round)
@@ -260,7 +256,6 @@ class Tournament:
         sleep(3)
         print("FINAL ROUND CREATED ...!")
 
-        print("TORNAMENT FINISHED .....!")
         print(f"ALL ROUNDS {rounds}")
         return rounds
 
