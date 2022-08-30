@@ -1,8 +1,8 @@
+from controllers.player import Controller_player
+from controllers.tournament import Controller_tournament
 from models.tournament import Tournament
 from view import Display
 from views.tournament import TournamentView
-from controllers.player import Controller_player
-from controllers.tournament import Controller_tournament
 
 
 class Round:

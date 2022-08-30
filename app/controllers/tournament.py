@@ -1,10 +1,11 @@
-from models.tournament import Tournament
-from models.round import Round
-from view import Display
-from views.tournament import TournamentView
-from validation import Validators
 from colorama import Fore
 
+from models.player import Player
+from models.round import Round
+from models.tournament import Tournament
+from validation import Validators
+from view import Display
+from views.tournament import TournamentView
 
 # class Round:
 #     def __init__(self, matchs):
@@ -26,6 +27,12 @@ class Controller_tournament:
     def showAllTournaments():
         tournaments = Tournament.load_tournaments_db()
         return TournamentView.showAllViewTournaments(tournaments)
+
+    def showPlayerNameInRound():
+        id = TournamentView.showPlayerName()
+        player_name = Player.showPlayerName(id)
+        print(f"player_name player_name {player_name}")
+        return
 
     def show_tournament_players():
         sort_data_as_dict = TournamentView.get_data_to_sort_with()

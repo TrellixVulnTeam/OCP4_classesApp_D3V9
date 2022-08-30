@@ -2,8 +2,8 @@ from time import sleep
 
 from tinydb import Query, TinyDB
 
-from models.player import Player
 from controllers.round import Controller_round
+from models.player import Player
 
 player_db = TinyDB("DB/players.json")
 player_db_query = Query()

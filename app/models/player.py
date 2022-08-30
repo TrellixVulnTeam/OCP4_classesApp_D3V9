@@ -65,7 +65,6 @@ class Player:
         if player is None:
             print(f"Il n'a y aucun joueur avec l'id {id}")
         else:
-            # print(f"Player à Modifier : {player}")
 
             classement = int(self.get("classement"))
             updated_player = player_db.update({"classement": classement}, doc_ids=[id])
@@ -74,6 +73,15 @@ class Player:
     def showPlayerName(id):
         player = player_db.get(doc_id=id)
         return player.get("last_name")
+
+    """
+    def showPlayerName(id):
+            player = player_db.get(doc_id=id)
+            print(f"player player {player}")
+            print(player.get("last_name"))
+            print(player["last_name"])
+            return player["last_name"]
+    """
 
     def show_sorted_players(self):
         res = player_db.all()

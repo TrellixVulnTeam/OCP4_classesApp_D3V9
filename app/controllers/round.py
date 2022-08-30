@@ -1,6 +1,7 @@
-from views.round import RoundView
-from validation import Validators
 from colorama import Fore
+
+from validation import Validators
+from views.round import RoundView
 
 
 class Controller_round:

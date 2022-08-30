@@ -1,5 +1,5 @@
-from controllers.reports import Controller_reports
 from controllers.player import Controller_player
+from controllers.reports import Controller_reports
 from controllers.tournament import Controller_tournament
 from view import Display
 

@@ -1,8 +1,9 @@
+from colorama import Fore
+
 from models.player import Player
+from validation import Validators
 from view import Display
 from views.player import PlayerView
-from validation import Validators
-from colorama import Fore
 
 
 class Controller_player:
