@@ -1,6 +1,7 @@
 from colorama import Fore, Style
 from prettytable import PrettyTable
 from models.player import Player
+from validation import Validators
 
 
 class TournamentView:
@@ -97,7 +98,12 @@ class TournamentView:
         for index, round in enumerate(matchs_in_tournament):
             for match in round:
                 matchs_table = PrettyTable()
-                matchs_table.field_names = ["Joueur UN", "Contre", "Joueur DEUX", "GANANT"]
+                matchs_table.field_names = [
+                    "Joueur UN",
+                    "Contre",
+                    "Joueur DEUX",
+                    "GANANT",
+                ]
                 winner = (
                     match[0]["player"]
                     if match[0]["histo_score"][index] == 1
@@ -115,17 +121,25 @@ class TournamentView:
                 matchs_table.add_row(["------", "------", "------", "------"])
                 print(matchs_table)
                 print(Style.RESET_ALL, end="")
-            
+
     def create_tournament():
-        # name = input("Entrez le nom de tournois : ")
-        # location = input("Entrez le lieu de tournois : ")
-        # start_at = input("Entrez la date début de tournois : ")
+        name = str(input("Entrez le nom de tournois : "))
+        while Validators.is_valide_input_string(name) is False:
+            name = input("Entrez le nom de tournois : ")
+        location = input("Entrez le lieu de tournois : ")
+        while Validators.is_valide_input_string(location) is False:
+            location = input("Entrez le nom de tournois : ")
+        start_at = input("Entrez la date début de tournois : ")
+        while Validators.is_date_valide(start_at) is False:
+            start_at = input("Entrez la date début de tournois : ")
+        end_at = input("Entrez la le date fin de tournois : ")
+        # while Validators.is_date_valide(start_at) is False:
         # end_at = input("Entrez la le date fin de tournois : ")
         # time_control = input("Entrez le contrôle du temps : ")
-        name = "Test 06"
-        location = "Nantes"
-        start_at = "30/06/2022"
-        end_at = "30/06/2022"
+        # name = "Test 06"
+        # location = "Nantes"
+        # start_at = "30/06/2022"
+        # end_at = "30/06/2022"
         time_control = 10
         round = 0
         players_str = input(
@@ -135,8 +149,10 @@ class TournamentView:
         players_int = [int(p) for p in players]
         rounds = []
         round_total = 4
-        # description = input("Entrez la description : ")
-        description = "la description"
+        description = input("Entrez la description : ")
+        while Validators.is_valide_input_string(description) is False:
+            description = input("Entrez la description : ")
+        # description = "la description"
         return (
             name,
             location,
@@ -212,7 +228,7 @@ class TournamentView:
             "Entrez l'id 'un tournoi pour affichier tous les rounds : "
         )
         return tournament_id
-    
+
     def get_matchs_in_tournaments():
         tournament_id = input(
             "Entrez l'id 'un tournoi pour affichier tous les matches : "

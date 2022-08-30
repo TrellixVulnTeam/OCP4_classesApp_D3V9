@@ -64,7 +64,7 @@ class PlayerView:
         while Validators.is_valide_input_string(last_name) is False:
             last_name = input("Entrez le nom ? ")
         date_of_birth = input(f"{Fore.CYAN}Entrez la date de naissance : ")
-        while Validators.is_dob_valide(date_of_birth) is False:
+        while Validators.is_date_valide(date_of_birth) is False:
             date_of_birth = input("Entrez la date de naissance ? ")
         gender = input(
             f"{Fore.CYAN} Entrez genre choiser dans cette liste 'M' Masculain, 'F' Femme, 'O' Autre ?"

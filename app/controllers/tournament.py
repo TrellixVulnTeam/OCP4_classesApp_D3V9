@@ -39,7 +39,7 @@ class Controller_tournament:
         """ use same get_rounds_in_tournament function to get data"""
         matchs_in_tournament = Tournament.get_rounds_in_tournament(id)
         return TournamentView.showMatchsInTournament(matchs_in_tournament)
-    
+
     def create_tournament():
         (
             name,

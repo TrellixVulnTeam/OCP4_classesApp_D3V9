@@ -4,32 +4,19 @@ from colorama import Fore
 
 
 class Validators:
-    def is_valide_date(your_date):
-        format = "%d-%m-Y"
-
-        try:
-            datetime.strptime(your_date, format)
-            print("This is the correct date string format.")
-        except ValueError:
-            print("This is the incorrect date string format. It should be DD/MM/YYYY")
-
-    def is_dob_valide(date_text):
+    def is_date_valide(date_text):
         try:
             datetime.strptime(date_text, "%d/%m/%Y")
         except ValueError:
-            print("This is the incorrect date string format. It should be DD/MM/YYYY")
-            raise ValueError("Incorrect data format, should be YYYY-MM-DD")
+            raise ValueError("Il s'agit du format de chaîne de date incorrect veuillez réessayer avec ce format DD/MM/YYYY")
 
     def is_valide_input_string(stie: str):
-        try:
-            if stie.isalpha():
-                return True
-            else:
-                print(f"{Fore.RED} + {stie} DOIT ETRE chaîne de caractères")
-                return False
-        except ValueError:
-            print(f"{Fore.RED} + {stie} ne doit pas être vide")
-            raise ValueError(f"{stie} ne doit pas être vide")
+        if len(stie) > 5:
+            print(f"len(stie) len(stie) {len(stie)}")
+            return True
+        else:
+            print(f"{Fore.RED} {stie} DOIT être un chaîne de caractères et 4 caractères minimum")
+            
 
     def is_valide_input_gender(gender: str):
         try:
