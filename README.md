@@ -1,4 +1,4 @@
-# OCP4_classesApp
+# OCP4_chessApp
 
 # To get this project:
 ### 1. Download a zip  
