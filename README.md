@@ -30,9 +30,35 @@ pip install -r .\requirements.txt
   1 - Gestion des joueurs\
   2 - Gestion des tournois\
   3 - Rapports\
-  q - Quitter\
+  q - Quitter
   Veuillez choisir une action :
+  
+  ### Gestion des joueurs Menu
+    1 - Créer un joueur
+    2 - Lister les joueurs
+    3 - Modifier un joueur
+    R - Reveneir à l'accueil
+  Veuillez choisir une action : 
  
+  ### Gestion des tournois
+   1 - Créer un nouveau tournoi\
+   2 - Lister les joueurs de tournoi\
+   3 - Saisir les resultats d'un tournoi\
+   4 - Liste des tournois\
+   5 - Modifier un tournoi\
+   6 - Afficher les rounds d'un tournoi\
+   R - Reveneir à l'accueil\
+  Veuillez choisir une action :
+  
+  ### Rapports
+  1 - Liste de tous les acteurs\
+  2 - Liste de tous les joueurs d'un tournoi\
+  3 - Liste de tous les tournois\
+  4 - Liste de tous les tours d'un tournoi\
+  5 - Liste de tous les matchs d'un tournoi\
+  R - Reveneir à l'accueil\
+Veuillez choisir une action :
+
  # Run flake8
  flake8 --format=html --htmldir=flake-report
   
