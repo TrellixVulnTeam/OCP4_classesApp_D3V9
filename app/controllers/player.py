@@ -36,9 +36,6 @@ class Controller_player:
         player_new_data_update.update({"id": id, "classement": classement})
         return Player.updateOnePlayer(player_new_data_update)
 
-    # def endView():
-    #     print("Goodbye!")
-
     def manage_players():
         menu = {
             "1": "Créer un joueur",

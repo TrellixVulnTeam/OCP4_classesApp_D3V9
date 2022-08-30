@@ -8,15 +8,18 @@ class Validators:
         try:
             datetime.strptime(date_text, "%d/%m/%Y")
         except ValueError:
-            raise ValueError("Il s'agit du format de chaîne de date incorrect veuillez réessayer avec ce format DD/MM/YYYY")
+            raise ValueError(
+                "Il s'agit du format de chaîne de date incorrect veuillez réessayer avec ce format DD/MM/YYYY"
+            )
 
     def is_valide_input_string(stie: str):
         if len(stie) > 5:
             print(f"len(stie) len(stie) {len(stie)}")
             return True
         else:
-            print(f"{Fore.RED} {stie} DOIT être un chaîne de caractères et 4 caractères minimum")
-            
+            print(
+                f"{Fore.RED} {stie} DOIT être un chaîne de caractères et 4 caractères minimum"
+            )
 
     def is_valide_input_gender(gender: str):
         try:
