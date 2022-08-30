@@ -34,10 +34,10 @@ pip install -r .\requirements.txt
   Veuillez choisir une action :
   
   ### Gestion des joueurs Menu
-    1 - Créer un joueur\
-    2 - Lister les joueurs\
-    3 - Modifier un joueur\
-    R - Reveneir à l'accueil\
+    1 - Créer un joueur
+    2 - Lister les joueurs
+    3 - Modifier un joueur
+    R - Reveneir à l'accueil
   Veuillez choisir une action : 
  
   ### Gestion des tournois
