@@ -30,7 +30,7 @@ pip install -r .\requirements.txt
   1 - Gestion des joueurs\
   2 - Gestion des tournois\
   3 - Rapports\
-  q - Quitter\
+  q - Quitter
   Veuillez choisir une action :
   
   ### Gestion des joueurs Menu
@@ -38,7 +38,7 @@ pip install -r .\requirements.txt
     2 - Lister les joueurs\
     3 - Modifier un joueur\
     R - Reveneir à l'accueil\
-  Veuillez choisir une action :\ 
+  Veuillez choisir une action : 
  
   ### Gestion des tournois
    1 - Créer un nouveau tournoi\
@@ -48,7 +48,7 @@ pip install -r .\requirements.txt
    5 - Modifier un tournoi\
    6 - Afficher les rounds d'un tournoi\
    R - Reveneir à l'accueil\
-  Veuillez choisir une action : \
+  Veuillez choisir une action :
   
   ### Rapports
   1 - Liste de tous les acteurs\
